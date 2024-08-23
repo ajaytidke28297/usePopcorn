@@ -1,6 +1,4 @@
 import React from "react";
-import ListBox from "./ListBox";
-import WatchedBox from "./WatchedBox";
 
 export const tempMovieData = [
   {
@@ -52,13 +50,8 @@ export const tempWatchedData = [
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-function Main() {
-  return (
-    <main className="main">
-      <ListBox />
-      <WatchedBox />
-    </main>
-  );
+function Main({ children }) {
+  return <main className="main">{children}</main>;
 }
 
 export default Main;

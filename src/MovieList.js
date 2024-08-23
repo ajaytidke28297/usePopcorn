@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { tempMovieData } from "./Main";
+import React from "react";
 import Movie from "./Movie";
 
-function MovieList() {
-  const [movies, setMovies] = useState(tempMovieData);
-
+function MovieList({ movies }) {
   return (
     <ul className="list">
       {movies?.map((movie) => (
