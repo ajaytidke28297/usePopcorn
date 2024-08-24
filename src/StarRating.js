@@ -12,12 +12,21 @@ const starContainerStyle = {
   gap: "4px",
 };
 
-function StarRating({ maxRating = 10, color = "#fcc419", size = 48 }) {
-  const [rating, setRating] = useState(0);
+function StarRating({
+  maxRating = 5,
+  color = "#fcc419",
+  size = 48,
+  className = "",
+  messages = [],
+  defaultRating = 0,
+  onSetRating,
+}) {
+  const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
 
   function handleRating(rating) {
     setRating(rating);
+    onSetRating(rating);
   }
 
   const textStyle = {
@@ -28,7 +37,7 @@ function StarRating({ maxRating = 10, color = "#fcc419", size = 48 }) {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className={className}>
       <div style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
@@ -42,7 +51,11 @@ function StarRating({ maxRating = 10, color = "#fcc419", size = 48 }) {
           />
         ))}
       </div>
-      <p style={textStyle}>{tempRating || rating || ""}</p>
+      <p style={textStyle}>
+        {messages.length === maxRating
+          ? messages[tempRating ? tempRating - 1 : rating - 1]
+          : tempRating || rating || ""}
+      </p>
     </div>
   );
 }

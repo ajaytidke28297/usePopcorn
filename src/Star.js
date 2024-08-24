@@ -1,7 +1,7 @@
 import React from "react";
 
 function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
-  const startStyle = {
+  const starStyle = {
     width: `${size}px`,
     height: `${size}px`,
     display: "block",
@@ -10,7 +10,8 @@ function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
 
   return (
     <span
-      style={startStyle}
+      role="button"
+      style={starStyle}
       onClick={onRate}
       onMouseEnter={onHoverIn}
       onMouseLeave={onHoverOut}
