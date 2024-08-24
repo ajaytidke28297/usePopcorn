@@ -29,6 +29,10 @@ export default function App() {
     setSelectedId(null);
   }
 
+  function hanldeAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
+  }
+
   useEffect(
     function () {
       async function fetchMovies() {
@@ -83,8 +87,10 @@ export default function App() {
         <Box>
           {selectedId ? (
             <MovieDetails
+              watched={watched}
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
+              onAddWatched={hanldeAddWatched}
             />
           ) : (
             <>
